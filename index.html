@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="千城千舍,小茶姑娘民宿，小茶姑娘分布位置，民宿预定" />
+<meta name="description" content="千城千舍,小茶姑娘民宿，小茶姑娘分布位置，民宿预定" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>千城千舍,小茶姑娘民宿，民宿预定分布位置</title>
+<style type="text/css">
+    html,body{margin:0;padding:0;font-size:100px;}
+   *{padding:0;margin:0;}
+/*地图标题*/
+.BMap_bubble_title { color: #e48812; padding-left: 5px;font-weight: 600;font-size: 15px;
+    background: #fff;padding-top: 5px;padding-left: 10px;}
+/* 消息内容 */
+.BMap_bubble_content {background: #fff;padding-left: 10px;padding-top: 5px;padding-bottom: 10px;
+    font-size: 12px;line-height: 22px;color: #a5582a;font-weight: 600;}
+/* 内容 */
+.BMap_pop div:nth-child(9) {top:35px !important;border-radius:7px;}
+/* 左上角删除按键 */
+.BMap_pop img {top:43px !important;left:215px !important;}
+.BMap_top {display:none;}
+.BMap_bottom {display:none;}
+.BMap_center {display:none;}
+.BMap_center+div{display: none;}
+/* 隐藏边角 */
+.BMap_pop div:nth-child(1) div {display:none;}
+.BMap_pop div:nth-child(3) {display:none;}
+.BMap_pop div:nth-child(7) {display:none;}
+.tips{ position: fixed;bottom: 0; right: 0;font-size: 13px; background: rgba(255, 255, 255, 0.64); width: 210px;
+    font-weight: 600;font-size: 15px;padding: 5px 0 5px 5px;}
+.tips p{color: #b35900;}
+.tips span{font-size: 12px;color: #505050;padding-top: 8px;display: block;}
+</style>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=wqBXfIN3HkpM1AHKWujjCdsi&s=1"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+    <div class="map">
+        <div style="width:100%;height:100%" id="map"></div>
+        <div class="tips">
+            <p>小茶官方服务： 4006367068</p><span>携程、去哪儿、艺龙、airbnb、 <br> 去呼吁均可查询</span>
+        </div>
+    </div>
+   <script type="text/javascript">
+       //创建和初始化地图函数：
+       function initMap() {
+           createMap();//创建地图
+           setMapEvent();//设置地图事件
+           addMapControl();//向地图添加控件
+           addMapOverlay();//向地图添加覆盖物   
+       }
+       function createMap() {
+           map = new BMap.Map("map");       //经度      //纬度    //缩放比例
+           map.centerAndZoom(new BMap.Point(119.6540443421,29.0843844893), 8);  
+       }
+       function setMapEvent() {
+           map.enableScrollWheelZoom();
+           map.enableKeyboard();
+           map.enableDragging();
+           map.enableDoubleClickZoom();
+       }
+       function addClickHandler(target, window) {
+           target.addEventListener("click", function () {
+               target.openInfoWindow(window);
+           });
+       }
+       function addMapOverlay() {
+           var markers = [
+                { content: "余杭塘栖古镇",
+                  phone: "18057122334",
+                  wechat: "hz-teahostel",
+                  storeHref:"http://www.baidu.com",
+                  title: "余杭塘栖小茶姑娘", 
+                  position: { lat: 30.4821216619 , lng:120.1907563263 } // 纬度  经度
+                }, 
+                { content: "浙江丽水松阳",
+                  phone: "18057122334",
+                  wechat: "hz-teahostel",
+                  storeHref:"http://www.baidu.com", 
+                  title: "松阳小茶姑娘", 
+                  position: { lat: 28.5360950061 , lng:119.3888653686 }// 纬度  经度 
+                }, 
+                { content: "浙江湖州溧阳天目湖",
+                  phone: "18057122334",
+                  wechat: "hz-teahostel",
+                  storeHref:"http://www.baidu.com", 
+                  title: "隐湖居", 
+                  position: { lat: 30.8691241310 , lng:120.0995194598 }  // 纬度  经度
+                }
+           ];
+           for (var index = 0; index < markers.length; index++) {
+               var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+               var marker = new BMap.Marker(point);
+               var label = new BMap.Label(markers[index].title, { offset: new BMap.Size(25, 0) });
+               label.setStyle({ 
+                    color : "#e8683f", 
+                    fontSize : "14px", 
+                    backgroundColor :"rgba(255,255,255,0.85)",
+                    padding:"5px",
+                    border :"0", 
+                    fontWeight :"bold" ,
+                    borderRadius:"14px"
+                });
+                var opts = {
+                   width: 210,
+                   title: markers[index].title,
+                   enableMessage: false
+               };
+              var infoWindow = new BMap.InfoWindow(
+                                  "地址：" + markers[index].content + 
+                                  "<br>咨询电话：" + markers[index].phone + 
+                                  "<br>掌柜微信：" + markers[index].wechat+
+                                  "<br> 逛 一 逛 ：<a href="+markers[index].storeHref+">点击查看店铺</a>", opts);
+
+               marker.setLabel(label);
+               addClickHandler(marker, infoWindow);
+               map.addOverlay(marker);
+           };
+           
+           var labels = [];
+           for (var index = 0; index < labels.length; index++) {
+               var opt = { position: new BMap.Point(labels[index].position.lng, labels[index].position.lat) };
+               var label = new BMap.Label(labels[index].content, opt);
+               map.addOverlay(label);
+           };
+       }
+       //向地图添加控件
+       function addMapControl() {
+           var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+           scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+           map.addControl(scaleControl);
+           var navControl = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+           map.addControl(navControl);
+       }
+       var map;
+       initMap();
+       
+   </script>
+   
+   </body>
+   </html>
