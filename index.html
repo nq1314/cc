@@ -1,142 +1,117 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="keywords" content="千城千舍,小茶姑娘民宿，小茶姑娘分布位置，民宿预定" />
-<meta name="description" content="千城千舍,小茶姑娘民宿，小茶姑娘分布位置，民宿预定" />
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<title>千城千舍,小茶姑娘民宿，民宿预定分布位置</title>
-<style type="text/css">
-    html,body{margin:0;padding:0;font-size:100px;}
-   *{padding:0;margin:0;}
-/*地图标题*/
-.BMap_bubble_title { color: #e48812; padding-left: 5px;font-weight: 600;font-size: 15px;
-    background: #fff;padding-top: 5px;padding-left: 10px;}
-/* 消息内容 */
-.BMap_bubble_content {background: #fff;padding-left: 10px;padding-top: 5px;padding-bottom: 10px;
-    font-size: 12px;line-height: 22px;color: #a5582a;font-weight: 600;}
-/* 内容 */
-.BMap_pop div:nth-child(9) {top:35px !important;border-radius:7px;}
-/* 左上角删除按键 */
-.BMap_pop img {top:43px !important;left:215px !important;}
-.BMap_top {display:none;}
-.BMap_bottom {display:none;}
-.BMap_center {display:none;}
-.BMap_center+div{display: none;}
-/* 隐藏边角 */
-.BMap_pop div:nth-child(1) div {display:none;}
-.BMap_pop div:nth-child(3) {display:none;}
-.BMap_pop div:nth-child(7) {display:none;}
-.tips{ position: fixed;bottom: 0; right: 0;font-size: 13px; background: rgba(255, 255, 255, 0.64); width: 210px;
-    font-weight: 600;font-size: 15px;padding: 5px 0 5px 5px;}
-.tips p{color: #b35900;}
-.tips span{font-size: 12px;color: #505050;padding-top: 8px;display: block;}
-</style>
-<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=wqBXfIN3HkpM1AHKWujjCdsi&s=1"></script>
-<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<title>HTML5 GetUserMedia Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 </head>
 <body>
-    <div class="map">
-        <div style="width:100%;height:100%" id="map"></div>
-        <div class="tips">
-            <p>小茶官方服务： 4006367068</p><span>携程、去哪儿、艺龙、airbnb、 <br> 去呼吁均可查询</span>
-        </div>
-    </div>
-   <script type="text/javascript">
-       //创建和初始化地图函数：
-       function initMap() {
-           createMap();//创建地图
-           setMapEvent();//设置地图事件
-           addMapControl();//向地图添加控件
-           addMapOverlay();//向地图添加覆盖物   
-       }
-       function createMap() {
-           map = new BMap.Map("map");       //经度      //纬度    //缩放比例
-           map.centerAndZoom(new BMap.Point(119.6540443421,29.0843844893), 8);  
-       }
-       function setMapEvent() {
-           map.enableScrollWheelZoom();
-           map.enableKeyboard();
-           map.enableDragging();
-           map.enableDoubleClickZoom();
-       }
-       function addClickHandler(target, window) {
-           target.addEventListener("click", function () {
-               target.openInfoWindow(window);
-           });
-       }
-       function addMapOverlay() {
-           var markers = [
-                { content: "余杭塘栖古镇",
-                  phone: "18057122334",
-                  wechat: "hz-teahostel",
-                  storeHref:"http://www.baidu.com",
-                  title: "余杭塘栖小茶姑娘", 
-                  position: { lat: 30.4821216619 , lng:120.1907563263 } // 纬度  经度
-                }, 
-                { content: "浙江丽水松阳",
-                  phone: "18057122334",
-                  wechat: "hz-teahostel",
-                  storeHref:"http://www.baidu.com", 
-                  title: "松阳小茶姑娘", 
-                  position: { lat: 28.5360950061 , lng:119.3888653686 }// 纬度  经度 
-                }, 
-                { content: "浙江湖州溧阳天目湖",
-                  phone: "18057122334",
-                  wechat: "hz-teahostel",
-                  storeHref:"http://www.baidu.com", 
-                  title: "隐湖居", 
-                  position: { lat: 30.8691241310 , lng:120.0995194598 }  // 纬度  经度
-                }
-           ];
-           for (var index = 0; index < markers.length; index++) {
-               var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
-               var marker = new BMap.Marker(point);
-               var label = new BMap.Label(markers[index].title, { offset: new BMap.Size(25, 0) });
-               label.setStyle({ 
-                    color : "#e8683f", 
-                    fontSize : "14px", 
-                    backgroundColor :"rgba(255,255,255,0.85)",
-                    padding:"5px",
-                    border :"0", 
-                    fontWeight :"bold" ,
-                    borderRadius:"14px"
-                });
-                var opts = {
-                   width: 210,
-                   title: markers[index].title,
-                   enableMessage: false
-               };
-              var infoWindow = new BMap.InfoWindow(
-                                  "地址：" + markers[index].content + 
-                                  "<br>咨询电话：" + markers[index].phone + 
-                                  "<br>掌柜微信：" + markers[index].wechat+
-                                  "<br> 逛 一 逛 ：<a href="+markers[index].storeHref+">点击查看店铺</a>", opts);
+<input type="button" title="开启摄像头" value="开启摄像头" onclick="getMedia();" /><br />
+<video height="120px" autoplay="autoplay"></video><hr />
+<input type="button" title="拍照" value="拍照" onclick="getPhoto();" /><br />
+<canvas id="canvas1" height="120px" ></canvas><hr />
+<input type="button" title="视频" value="视频" onclick="getVedio();" /><br />
+<canvas id="canvas2" height="120px"></canvas>
 
-               marker.setLabel(label);
-               addClickHandler(marker, infoWindow);
-               map.addOverlay(marker);
-           };
-           
-           var labels = [];
-           for (var index = 0; index < labels.length; index++) {
-               var opt = { position: new BMap.Point(labels[index].position.lng, labels[index].position.lat) };
-               var label = new BMap.Label(labels[index].content, opt);
-               map.addOverlay(label);
-           };
-       }
-       //向地图添加控件
-       function addMapControl() {
-           var scaleControl = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
-           scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
-           map.addControl(scaleControl);
-           var navControl = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
-           map.addControl(navControl);
-       }
-       var map;
-       initMap();
-       
-   </script>
-   
-   </body>
-   </html>
+<script type="text/javascript">
+var video = document.querySelector('video');
+var audio, audioType;
+
+var canvas1 = document.getElementById('canvas1');
+var context1 = canvas1.getContext('2d');
+
+var canvas2 = document.getElementById('canvas2');
+var context2 = canvas2.getContext('2d');
+
+navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+
+var exArray = []; //存储设备源ID
+MediaStreamTrack.getSources(function (sourceInfos) {
+for (var i = 0; i != sourceInfos.length; ++i) {
+var sourceInfo = sourceInfos[i];
+//这里会遍历audio,video，所以要加以区分
+if (sourceInfo.kind === 'video') {
+exArray.push(sourceInfo.id);
+}
+}
+});
+
+function getMedia() {
+if (navigator.getUserMedia) {
+navigator.getUserMedia({
+'video': {
+'optional': [{
+'sourceId': exArray[1] //0为前置摄像头，1为后置
+}]
+},
+'audio':true
+}, successFunc, errorFunc); //success是获取成功的回调函数
+}
+else {
+alert('Native device media streaming (getUserMedia) not supported in this browser.');
+}
+}
+
+function successFunc(stream) {
+//alert('Succeed to get media!');
+if (video.mozSrcObject !== undefined) {
+//Firefox中，video.mozSrcObject最初为null，而不是未定义的，我们可以靠这个来检测Firefox的支持
+video.mozSrcObject = stream;
+}
+else {
+video.src = window.URL && window.URL.createObjectURL(stream) || stream;
+}
+
+//video.play();
+
+// 音频
+audio = new Audio();
+audioType = getAudioType(audio);
+if (audioType) {
+audio.src = 'polaroid.' + audioType;
+audio.play();
+}
+}
+function errorFunc(e) {
+alert('Error！'+e);
+}
+
+
+// 将视频帧绘制到Canvas对象上,Canvas每60ms切换帧，形成肉眼视频效果
+function drawVideoAtCanvas(video,context) {
+window.setInterval(function () {
+context.drawImage(video, 0, 0,90,120);
+}, 60);
+}
+
+//获取音频格式
+function getAudioType(element) {
+if (element.canPlayType) {
+if (element.canPlayType('audio/mp4; codecs="mp4a.40.5"') !== '') {
+return ('aac');
+} else if (element.canPlayType('audio/ogg; codecs="vorbis"') !== '') {
+return ("ogg");
+}
+}
+return false;
+}
+
+// vedio播放时触发，绘制vedio帧图像到canvas
+// video.addEventListener('play', function () {
+// drawVideoAtCanvas(video, context2);
+// }, false);
+
+//拍照
+function getPhoto() {
+context1.drawImage(video, 0, 0,90,120); //将video对象内指定的区域捕捉绘制到画布上指定的区域，实现拍照。
+}
+
+//视频
+function getVedio() {
+drawVideoAtCanvas(video, context2);
+}
+
+</script>
+</body>
+</html>
+复制代码
